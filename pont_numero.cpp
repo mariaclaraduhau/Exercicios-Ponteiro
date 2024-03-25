@@ -1,23 +1,19 @@
 #include<stdio.h>
 
-int ParteInt(double *p){
-    int p_inteiro = (int)*p;
-    return p_inteiro;
+void ParteInt_Frac(double *p, int *p_int, double *p_frac){
+    *p_int = (int)*p;
+    *p_frac = *p - *p_int;
 }
-
-double Fracionaria(double *p){
-    double frac = *p - ParteInt(p);
-    return frac;
-}
-
+    
 int main(){
-    double p_valor;
-    double *p = &p_valor;
+    double p_valor, frac; 
+    double *p = &p_valor, *p_frac = &frac;
+    int inteiro;
+    int *p_int = &inteiro;
     scanf("%lf", p);
-    int p_int = ParteInt(p);
-    printf("Parte Inteira: %d\n", p_int);
-    double p_frac = Fracionaria(p);
-    printf("Parte Fracionaria: %.2lf\n", p_frac);
+    ParteInt_Frac(p, p_int, p_frac);
+    printf("Parte Inteira: %d\n", inteiro);
+    printf("Parte Fracionaria: %.2lf\n", frac);
 
     return 0;
 }
